@@ -62,7 +62,7 @@ public abstract class SingleTargetDamageSpell extends Spell {
             int damage = damageDice.roll() + damageDice.roll();
             log.info(actor.getName() + " critically hits a spell on " + target.getName() + " with a " + spell.getName() + ": damage=" + damage);
             target.takeDamage(damage, false, true, false, false);
-        } else if (spellCheckRoll + spellCheckModifier >= difficultyClass) {
+        } else if (spellCheckRoll + spellCheckModifier + spellCheckBonus >= difficultyClass) {
             int damage = damageDice.roll();
             log.info(actor.getName() + " hits a spell on " + target.getName() + " with a " + spell.getName() + ": damage=" + damage);
             target.takeDamage(damage, false, true, false, false);
