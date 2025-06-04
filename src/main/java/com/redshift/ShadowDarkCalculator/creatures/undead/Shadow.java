@@ -21,15 +21,15 @@ public class Shadow extends UndeadMonster {
                 new Stats(3, 14, 14, 6, 10, 12),
                 12,
                 D8.roll() + D8.roll() + D8.roll() + 2,
-                new PerformAllAction(new DraiingTouch(), new DraiingTouch()),
+                new PerformAllAction(new DrainingTouch(), new DrainingTouch()),
                 new RandomTargetSelector()
         );
         getLabels().add(Label.BRUTE);
     }
 
-    public static class DraiingTouch extends Weapon {
+    private static class DrainingTouch extends Weapon {
 
-        public DraiingTouch() {
+        public DrainingTouch() {
             super("Draining Touch", D4, RollModifier.DEXTERITY);
         }
 
