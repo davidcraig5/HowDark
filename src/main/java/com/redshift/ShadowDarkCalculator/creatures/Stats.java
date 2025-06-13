@@ -41,18 +41,10 @@ public class Stats {
     }
 
     private int getModifier(int attribute) {
-        return switch (attribute) {
-            case 1, 2, 3 -> -4;
-            case 4, 5 -> -3;
-            case 6, 7 -> -2;
-            case 8, 9 -> -1;
-            case 10, 11 -> 0;
-            case 12, 13 -> 1;
-            case 14, 15 -> 2;
-            case 16, 17 -> 3;
-            case 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 -> 4;
-            default -> 0;
-        };
+        // Use the standard D20 ability score modifier calculation. This fixes an
+        // issue where scores above 17 always returned a +4 modifier.
+        // floorDiv handles negative values correctly (e.g. a score of 1 -> -5).
+        return Math.floorDiv(attribute - 10, 2);
     }
 
     public int getStrengthModifier() {
